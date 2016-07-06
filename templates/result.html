@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+    <head>
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+        
+        <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+        
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+        <script src="{% static 'index.js' %}"></script>
+    </head>
+    {%if matchData.matchPercent == 0 %}
+        <body  style="background-image:url(http://cdn.leagueoflegends.com/lolkit/1.1.6/resources/images/bg-default.jpg)">
+    {% else %}
+        <body  style="background-color: black; background-repeat: no-repeat; background-image:url(https://lolstatic-a.akamaihd.net/game-info/1.1.9/images/champion/backdrop/bg-{{matchData.match.player.mostPlayedLower}}.jpg)">
+    {% endif %}
+    <div class="row blue-grey darken-3">
+        <div class="col s12" style="text-align: center;"><a href="/form"><img height="200px" src="{% static 'images/logo.png' %}"></a></div>
+    </div>
+    <div class="section"></div>
+    <div class="section"></div>
+    <div class="section"></div>
+    <div class="row">
+        <div class="col s8" style="text-align: center; cellpadding: 0px;"><h1 class="white-text">{{matchData.match.player.name}}</h1></div>
+        {%if matchData.matchPercent == 0 %}
+        <div class="col s12" style="text-align: center;"><h1 class="white-text">Sorry! There are no matches for you right now.</h1></div>
+        {% else %}
+        <div class="col s8" style="text-align: center;"><h2 class="white-text">{{matchData.matchPercent}}% Match!</h2></div>
+    </div>
+    <div class="section"></div>
+    <div class="section"></div>
+    <div class="section"></div>
+    <div class="section"></div>
+    <div class="section"></div>
+    <div class="section"></div>
+    <div class="row">
+        <div class="col s6 offset-s3">
+        <div class="card-panel  grey lighten-2">
+            <div class="section" style="text-align: center;"><h4>Get to know your match!</h2></div>
+            <div class="divider grey darken-2"></div>
+            <div class="section"><h4>Main: {{matchData.match.player.mostPlayed}}</h2></div>
+            <div class="divider grey darken-2"></div>
+            <div class="section"><h4>Rank: {{matchData.match.player.rank}}</h2></div>
+            <div class="divider grey darken-2"></div>
+            <div class="section"><h4>Role: {{matchData.match.player.lane}}</h2></div>
+            <div class="divider grey darken-2"></div>
+            <div class="section"><h4>Ranked Win Rate: {{matchData.match.player.winRate}}%</h2></div>
+            <div class="divider grey darken-2"></div>
+            <div class="section"><h4>Ranked Kill/Death/Assist Ratio: {{matchData.match.player.kda}}</h2></div>
+            <div class="divider grey darken-2"></div>
+           
+        </div></div>
+    </div>
+        
+        
+        
+        {% endif %}
+    </div>
+    <div class="row">
+        
+    </div>
+
+
+    </body>
+
+</html>

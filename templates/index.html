@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+    <head>
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+        
+        <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+        
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+        <script src="{% static 'index.js' %}"></script>
+      	<link rel="stylesheet" href="{% static 'css/index.css' %}">
+    </head>
+    
+    <body>
+<script>function validate()
+	
+	{
+	if (document.information.name.value.length < 3) 
+
+	{
+	alert("Please enter a valid Summoner Name.");
+	return false;		
+	}
+	
+	return true;
+	}
+
+	
+</script>
+
+<div class="row blue-grey darken-3">
+    <div class="col s12" style="text-align: center;"><img width="900" height="200px" src="{% static 'images/logo.png' %}"></div>
+      </div>
+
+<div class="row">
+  <div class="col s4 offset-s4" style="text-align: center;">
+      <div class="card-panel  grey lighten-4">
+      <div>
+        <form name="information" method="POST" action="/takeInfo" class="row" onSubmit = "return validate();">
+            {% csrf_token %}
+            <div class="input-field col s12">
+              <input name="name" placeholder=""  type="text">
+              <label for="text">Summoner Name</label></div>
+            <div class="input-field col s12">
+                <select name="region">
+                  <option value="NULL" disabled selected>Choose your option</option>
+                  <option value="na">NA</option>
+                  <option value="euw">EUW</option></option>
+                </select>
+                <label>Region</label>
+              </div>
+              
+              <div class="input-field col s12">
+                <select name="lane">
+                  <option value="NULL" disabled selected>Choose your option</option>
+                  <option value="top">Top</option>
+                  <option value="jungle">Jungle</option>
+                  <option value="mid">Mid</option>
+                  <option value="adc">ADC</option>
+                  <option value="support">Support</option>
+                </select>
+                <label>Role</label>
+                </div>
+                
+              <div class="input-field col s12">
+                <select name="partner">
+                  <option value="NULL" disabled selected>Choose your option</option>
+                  <option value="top">Top</option>
+                  <option value="jungle">Jungle</option>
+                  <option value="mid">Mid</option>
+                  <option value="adc">ADC</option>
+                  <option value="support">Support</option>
+                </select>
+                <label>Who do you want to play with?</label>
+                </div>
+                
+              <div class="input-field col s12">
+                <select name="q1">
+                  <option value="NULL" disabled selected>Choose your option</option>
+                  <option value="trade">Trade a lot.</option>
+                  <option value="farm">Farm a lot.</option>
+                  <option value="both">Do either!</option>
+                </select>
+                <label>In lane I like to:</label>
+                </div>
+                
+              <div class="input-field col s12">
+                <select name="q2">
+                  <option value="NULL" disabled selected>Choose your option</option>
+                  <option value="dps">DPS champions.</option>
+                  <option value="burst">Burst Champions.</option>
+                  <option value="both">Either!</option>
+                </select>
+                <label>I usually like to play:</label>
+                </div>
+                
+              <div class="input-field col s12">
+                <select name="q3">
+                    <option value="NULL" disabled selected>Choose your option</option>
+                  <option value="safe">I play passive and like to stay safe.</option>
+                  <option value="aggressive">I'm aggressive!</option></option>
+                </select>
+                <label>In general,</label>
+                </div>
+                
+              <div class="input-field col s12">
+                <select name="q4">
+                  <option value="NULL" disabled selected>Choose your option</option>
+                  <option value="damage">Having more damage.</option>
+                  <option value="cc">Having more crowd control.</option>
+                  <option value="both">I can do either!</option>
+                </select>
+                <label>I prefer:</label>
+                </div>
+                
+              <div class="input-field col s12">
+                <select name="q5">
+                  <option value="NULL" disabled selected>Choose your option</option>
+                  <option value="ganked">I love receiving ganks.</option>
+                  <option value="ganker">I'm the one ganking.</option>
+                  <option value="both">Both!</option>
+                </select>
+                <label>During laning phase:</label>
+                </div>
+          <button class="btn waves-effect waves-light btn-large" type="submit" name="action">
+                  <class="material-icons right">Find me a match!</>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+  </div>
+</div>
+
+
+        
+    </body>
+</html>
